@@ -1,6 +1,12 @@
-@import './title';
+@import "~bootstrap/scss/bootstrap";
+@import './island';
 
 
 body {
-  background: url('../../assets/images/cat@720x405.jpeg');
+  background: rgb(176, 198, 219);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
 }

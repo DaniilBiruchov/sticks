@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Getting Started</title>
-  </head>
-  <body>
-    <h1 class="title">Template webpack</h1>
 
-    <script src="./dist/bundle.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <title>Getting Started</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Создание структруы приложения -->
+    <div class="island">
+      <div class="island__item d-flex justify-content-between align-items-center">
+        <h2>Blog</h2>
+        <button class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#formModal">Create</button>
+      </div>
+    </div>
+
+    <div class="row" style="min-height: 460px;">
+      <div class="col-4">
+        <div class="island h-100" id="posts">
+
+        </div>
+      </div>
+
+      <div class="col-8">
+        <div class="island h-100" id="post">
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Модальное окно -->
+  <div class="modal fade" id="formModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+              <label for="content" class="form-label">Content</label>
+              <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/bundle.js"></script>
+</body>
+
 </html>
