@@ -10,9 +10,9 @@
   <div class="container">
     <!-- Создание структруы приложения -->
     <div class="island">
-      <div class="island__item d-flex justify-content-between align-items-center">
-        <h2>Blog</h2>
-        <button class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#formModal">Create</button>
+      <div class="island__item mt-4 d-flex justify-content-between align-items-center">
+        <h2>Travel map</h2>
+        <button class="btn btn-primary ms-auto" id="buttonCreatePost">Create</button>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-<!-- Модальное окно -->
+  <!-- Модальное окно -->
   <div class="modal fade" id="formModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -39,10 +39,21 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form id="form">
+          <form id="form" data-method="POST">
+            <input type="hidden" name="id">
+            <input type="hidden" name="createAd">
             <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
+              <label for="title" class="form-label">Сountry</label>
               <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+              <label for="view" class="form-label">View travel</label>
+              <select name="view" class="view">
+                <option value="Mountains" selected>Mountains</option>
+                <option value="Sea">Sea</option>
+                <option value="City">City</option>
+                <option value="Museum">Museum</option>
+              </select>
             </div>
             <div class="mb-3">
               <label for="content" class="form-label">Content</label>
