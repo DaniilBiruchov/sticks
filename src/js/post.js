@@ -61,11 +61,13 @@ class Post {
         <h2>${data.title}</h2>
         <p>${data.view}</p>
         <p>${data.content}</p>
-        <time>${data.createAd}</time>
-      </div>
-      <div class="button">
-        <button class="btn btn-warning mr-4" id="edit" data-role="edit">Edit</button>
-        <button class="btn btn-danger mr-2" id="delete" data-role="remove">Delete</button>
+        <div class="d-flex justify-content-between d-flex align-items-center">
+          <time>${data.createAd}</time>
+          <div>
+            <button class="btn btn-warning" id="edit" data-role="edit">Edit</button>
+            <button class="btn btn-danger" id="delete" data-role="remove">Delete</button>
+          </div>
+        </div>
       </div>
     `
   }
