@@ -40,6 +40,11 @@ class Form {
       }
     }
 
+    const customEvent = new CustomEvent('form.edit', {
+      detail: { post }
+    })
+    window.dispatchEvent(customEvent)
+
     this.sendData(post)
     this.instanceModal.hide() // скрыть модальное окно
     resetForm(this.formElement)
@@ -66,7 +71,7 @@ class Form {
   }
 
   // событие для модального окна
-  sendData (post) {
+  async sendData (post) {
     const json = JSON.stringify(post)
     const { method } = this.formElement.dataset
     let url = this.baseUrl
@@ -75,20 +80,18 @@ class Form {
       url = `${url}/${post.id}`
     }
 
-    fetch(url, { // по умолчанию метод 'GET' и указываеться только URL, если другой то раписываеться так
+    const response = await fetch(url, { // по умолчанию метод 'GET' и указываеться только URL, если другой то раписываеться так
       method,
       body: json,
       headers: {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => response.json())
-      .then(data => {
-        const event = new CustomEvent('form.sent', { // const event = new CustomEvent("название событие(должно как можно точно описывать действие события)" , {detail: "любое значение" detail — обязательно, его значение может быть любое})
-          detail: { data }
-        })
-        window.dispatchEvent(event)
-      })
+    const data = await response.json()
+    const customEvent = new CustomEvent('form.sent', { // const event = new CustomEvent("название событие(должно как можно точно описывать действие события)" , {detail: "любое значение" detail — обязательно, его значение может быть любое})
+      detail: { data }
+    })
+    window.dispatchEvent(customEvent)
   }
 }
 

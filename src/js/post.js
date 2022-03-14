@@ -11,36 +11,33 @@ class Post {
     window.addEventListener('posts.receive', this.handelReceivedData.bind(this))
     this.storageElement.addEventListener('click', this.handelDeleteListElement.bind(this))
     this.storageElement.addEventListener('click', this.handelEditListElement.bind(this))
+    window.addEventListener('form.edit', this.handelEditPost.bind(this))
   }
 
-  handelReceivedData (event) {
+  async handelReceivedData (event) {
     const { id } = event.detail
     const url = `${this.baseUrl}/${id}`
     this.url = url
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        this.currentPost = data
-        this.render(data)
-      })
+    const response = await fetch(url)
+    const data = await response.json()
+    this.currentPost = data
+    this.render(data)
   }
 
-  handelDeleteListElement (event) {
+  async handelDeleteListElement (event) {
     const { role } = event.target.dataset
 
     if (role == 'remove') {
-      fetch(this.url, {
+      const response = await fetch(this.url, {
         method: 'DELETE'
       })
-        .then(response => response.json())
-        .then(data => {
-          const customEvent = new CustomEvent('post.remove', {
-            detail: { data }
-          })
-          window.dispatchEvent(customEvent)
-          this.storageElement.innerHTML = ''
-        })
+      const data = await response.json()
+      const customEvent = new CustomEvent('post.remove', {
+        detail: { data }
+      })
+      window.dispatchEvent(customEvent)
+      this.storageElement.innerHTML = ''
     }
   }
 
@@ -53,6 +50,12 @@ class Post {
       })
       window.dispatchEvent(customEvent)
     }
+  }
+
+  handelEditPost (event) {
+    const { post } = event.detail
+    this.currentPost = post
+    this.render(post)
   }
 
   templatePost (data) {

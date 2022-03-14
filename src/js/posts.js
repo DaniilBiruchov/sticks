@@ -13,19 +13,16 @@ class Posts {
     this.containerElement.addEventListener('click', this.handelClickPosts.bind(this))
   }
 
-  handelDomReady () {
-    fetch(this.baseUrl)
-      .then(response => response.json())
-      .then(data => {
-        const { list } = data
-        this.render(list)
-      })
+  async handelDomReady () {
+    const response = await fetch(this.baseUrl)
+    const data = await response.json()
+    const { list } = data
+    this.render(list)
   }
 
   handelDataSent ({ detail }) {
     const { data } = detail
 
-    console.log(data)
     this.render(data.list)
   }
 
