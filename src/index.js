@@ -1,18 +1,8 @@
 import { Modal } from 'bootstrap' // вызов модального окна
 
 import './scss/app.scss'
-import { Form } from './js/form'
-import { Posts } from './js/posts'
-import { Post } from './js/post'
+import { Cards } from './js/cards'
+// import { DnD } from './js/dnd'
 
-const modalElement = document.querySelector('#formModal')
-const instanceModal = new Modal(modalElement) // подключение модального окна
+new Cards()
 
-const formElement = document.querySelector('#form')
-const instanceForm = new Form(formElement)
-
-const postsElement = document.querySelector('#posts')
-const instancePosts = new Posts(postsElement)
-
-const postElement = document.querySelector('#post')
-const instancePost = new Post(postElement)

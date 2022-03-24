@@ -1,0 +1,48 @@
+.card {
+  position: absolute;
+  width: 185px;
+  height: 240px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: lightblue;
+  box-shadow: 11px 9px 5px 4px rgba(34, 60, 80, 0.2);
+
+  &_edit {
+    .card__form {
+      display: block;
+    }
+
+    .card__content {
+      display: none;
+    }
+
+  &__form {
+    display: none;
+  }
+}
+}
+
+.card_edit {
+  display: block;
+}
+
+.card__form {
+  display: none;
+}
+
+.remove {
+  border: 0;
+  padding: 0;
+  background: none;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+.edit {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+
+
